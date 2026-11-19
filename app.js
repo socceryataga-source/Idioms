@@ -8,6 +8,7 @@
     window.IDIOM_QUIZ_601_700,window.IDIOM_QUIZ_701_800
   ];
   const bank = window.IDIOM_ANSWER_BANK || {};
+  const examples = window.IDIOM_EXAMPLES || {};
   let state = null;
   const screens = ['home','quiz','result'];
   const rangeText = b => `NO. ${b*100+1}–${b*100+100}`;
@@ -27,10 +28,10 @@
   const sameAnswer = (a,b) => String(a).replace(/\s+/g,'').normalize('NFKC')===String(b).replace(/\s+/g,'').normalize('NFKC');
   function validateData() {
     if (blocks.some((b,i)=>!Array.isArray(b) || b.length!==100)) throw new Error('100問単位の問題データが見つかりません。dataフォルダ内の8つの問題ファイルを確認してください。');
-    if (Object.keys(bank).length !== 800 || byId.size!==800) throw new Error('800問の問題・解答データが揃っていません。');
+    if (Object.keys(bank).length !== 800 || Object.keys(examples).length !== 800 || byId.size!==800) throw new Error('800問の問題・解答データが揃っていません。');
     for (let i=1;i<=800;i++) {
       const q=byId.get(i);
-      if (!q || q.answerId !== i || !q.idiom || !bank[i] || !Array.isArray(q.distractorIds) || q.distractorIds.length!==3) throw new Error(`No.${i} の問題データを確認してください。`);
+      if (!q || q.answerId !== i || !q.idiom || !bank[i] || !examples[i] || !Array.isArray(q.distractorIds) || q.distractorIds.length!==3) throw new Error(`No.${i} の問題データを確認してください。`);
       const values=[q.answerId,...q.distractorIds].map(n=>bank[n]);
       if (values.some(v=>!v) || values.some((v,j)=>values.some((w,k)=>j!==k && sameAnswer(v,w)))) throw new Error(`No.${i} の選択肢データに重複・欠落があります。`);
     }
@@ -88,6 +89,7 @@
     $('answer-heading').textContent=right?'正解！ Excellent!':'惜しい！ Keep going!';
     $('answer-heading').className='answer-heading '+(right?'correct-text':'wrong-text');
     $('answer-detail').textContent=`${q.idiom} ＝ ${bank[q.answerId]}`;
+    $('answer-example').textContent=examples[q.id] || ''; 
     $('answer-panel').hidden=false;
     $('quiz-score').textContent=`${s.correct} CORRECT`;
     $('progress-fill').style.width=`${(s.index+1)/s.items.length*100}%`;

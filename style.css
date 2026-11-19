@@ -23,3 +23,9 @@
 .settings-footnote{font-family:var(--ui);font-size:12px;line-height:1.85;margin-top:19px}
 @media(max-width:950px){.hero-layout{grid-template-columns:1fr;gap:16px}.hero-intro{padding:6px 0 22px}.hero-intro h1{font-size:clamp(49px,8vw,75px)}.settings-card{width:100%;max-width:620px;margin:0 auto}}
 @media(max-width:560px){.hero-intro h1{font-size:clamp(40px,9.4vw,55px);letter-spacing:-1.4px}.hero-finale{font-size:.8em;letter-spacing:-1px}.settings-card{padding:25px 20px}.settings-card h2{font-size:26px}.settings-card select{font-size:16px}.segmented span{font-size:14px;min-height:57px}.count-grid{gap:7px}.count-grid span{font-size:24px}.count-grid small{font-size:13px}.settings-card .start-btn{font-size:17px}.header-note{font-size:9px}}
+
+/* Usage examples displayed after answering */
+.example-box{margin-top:16px;padding-top:14px;border-top:1px solid #e5dcdc}
+.example-label{font-family:var(--sans,'DM Sans',sans-serif);font-size:10px;letter-spacing:1.8px;font-weight:800;color:var(--wine)}
+.example-label span{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:0;margin-left:8px;color:#91858a;font-weight:500}
+.answer-panel .answer-example{font-family:'DM Sans','Segoe UI',sans-serif;font-size:clamp(15px,2vw,18px);font-weight:600;line-height:1.7;margin:8px 0 2px;color:#322b31;overflow-wrap:anywhere}
