@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7d2949">
+  <meta name="description" content="英熟語800問から範囲と問題数を選んで練習できる4択学習サイト">
+  <title>IDIOM PRACTICE | English Expressions</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data/answer-bank-001-800.js" defer></script>
+  <script src="data/quiz-001-100.js" defer></script>
+  <script src="data/quiz-101-200.js" defer></script>
+  <script src="data/quiz-201-300.js" defer></script>
+  <script src="data/quiz-301-400.js" defer></script>
+  <script src="data/quiz-401-500.js" defer></script>
+  <script src="data/quiz-501-600.js" defer></script>
+  <script src="data/quiz-601-700.js" defer></script>
+  <script src="data/quiz-701-800.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#home" id="logo-home" aria-label="ホームへ戻る"><span class="mark">ip<span class="mark-dot">.</span></span><span class="wordmark-text">IDIOM <b>PRACTICE</b></span></a>
+      <span class="header-note">ENGLISH EXPRESSIONS <span class="tiny-star">✦</span> 800</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <section id="screen-home" class="screen" aria-labelledby="hero-title">
+      <div class="eyebrow"><span class="eyebrow-line"></span> STUDY AT YOUR OWN PACE</div>
+      <div class="hero-layout">
+        <div class="hero-intro">
+          <h1 id="hero-title">Make every<br><em>expression</em><br>your own<span class="period">.</span></h1>
+          <p class="hero-ja">英熟語を、もっと自分のものに。</p>
+          <p class="hero-description">全800問から好きな範囲を選んで、4択でトレーニング。<br>少しずつの積み重ねが、確かな英語力になる。</p>
+          <div class="hero-stats"><div><strong>800</strong><span>EXPRESSIONS</span></div><div><strong>8</strong><span>LEVEL BLOCKS</span></div><div><strong>4</strong><span>CHOICES</span></div></div>
+        </div>
+        <section class="settings-card" aria-labelledby="settings-heading">
+          <div class="card-top"><span class="mini-tag">YOUR SESSION</span><span class="card-spark">✦</span></div>
+          <h2 id="settings-heading">学習設定 <span class="heading-en">SET UP</span></h2>
+          <form id="setup-form">
+            <label class="field-label" for="range-select"><span class="field-num">01</span> 出題範囲</label>
+            <div class="select-wrap"><select id="range-select" required>
+              <option value="0">No. 1–100</option><option value="1">No. 101–200</option><option value="2">No. 201–300</option><option value="3">No. 301–400</option>
+              <option value="4">No. 401–500</option><option value="5">No. 501–600</option><option value="6">No. 601–700</option><option value="7">No. 701–800</option>
+            </select></div>
+            <label class="field-label"><span class="field-num">02</span> 出題順</label>
+            <div class="segmented" role="group" aria-label="出題順"><label><input type="radio" name="order" value="random" checked><span>↝ ランダム</span></label><label><input type="radio" name="order" value="sequential"><span>≡ 順番通り</span></label></div>
+            <label class="field-label"><span class="field-num">03</span> 出題問題数</label>
+            <div class="count-grid" role="group" aria-label="出題問題数"><label><input type="radio" name="count" value="20" checked><span>20<small>問</small></span></label><label><input type="radio" name="count" value="50"><span>50<small>問</small></span></label><label><input type="radio" name="count" value="70"><span>70<small>問</small></span></label><label><input type="radio" name="count" value="100"><span>100<small>問</small></span></label></div>
+            <button class="primary-btn start-btn" type="submit">Start practice <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="settings-footnote">問題の途中でもHOMEに戻れます。<br>同じ問題は1回の学習で重複しません。</p>
+        </section>
+      </div>
+      <p class="motto">PRACTICE MAKES PERFECT. <span>— ONE EXPRESSION AT A TIME</span></p>
+    </section>
+
+    <section id="screen-quiz" class="screen" hidden aria-labelledby="quiz-title">
+      <div class="quiz-topline"><button class="ghost-btn" id="quiz-home" type="button">← HOME</button><span class="quiz-range" id="quiz-range">NO. 1–100</span></div>
+      <div class="quiz-shell">
+        <div class="quiz-meta"><span id="quiz-counter">QUESTION 01 / 20</span><span id="quiz-score">0 CORRECT</span></div>
+        <div class="progress-track" role="progressbar" aria-label="学習進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track"><div id="progress-fill"></div></div>
+        <div class="question-stage"><div class="question-num" id="question-id">IDIOM / 001</div><p class="question-guide">次の英熟語の意味として最も適切なものを選びなさい。</p><h2 id="quiz-title" class="idiom-text">carry out A</h2></div>
+        <div id="options" class="options" role="group" aria-label="解答選択肢"></div>
+        <div class="answer-panel" id="answer-panel" aria-live="polite" hidden><div class="answer-heading" id="answer-heading">正解！</div><p id="answer-detail"></p></div>
+        <div class="quiz-actions"><span class="help-text" id="quiz-help">選択肢をタップして解答</span><button type="button" id="next-btn" class="primary-btn next-btn" hidden>Next question <span>→</span></button></div>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen" hidden aria-labelledby="result-title">
+      <div class="quiz-topline"><button class="ghost-btn" id="result-home-top" type="button">← HOME</button><span class="quiz-range">SESSION COMPLETE</span></div>
+      <div class="results-card"><div class="result-stars" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ✦</div><div class="eyebrow result-eyebrow">WELL DONE!</div><h2 id="result-title">Practice complete<span class="period">.</span></h2><p class="result-sub">お疲れさまでした！今回の学習結果です。</p>
+      <div class="score-orb"><strong id="result-percent">0<small>%</small></strong><span>ACCURACY</span></div>
+      <div class="result-stat-grid"><div><strong id="result-correct">0</strong><span>正解</span></div><div><strong id="result-wrong">0</strong><span>不正解</span></div><div><strong id="result-total">0</strong><span>出題数</span></div></div>
+      <p id="result-message" class="result-message"></p><div class="result-actions"><button type="button" class="primary-btn" id="retry-wrong">間違えた問題を復習 <span>↗</span></button><button type="button" class="outline-btn" id="retry-same">同じ設定でもう一度</button><button type="button" class="text-btn" id="result-home">HOMEに戻る →</button></div></div>
+    </section>
+    <div id="data-error" class="error-box" role="alert" hidden></div>
+  </main>
+  <footer><span>IDIOM PRACTICE</span><span>Small steps, stronger English.</span></footer>
+  <dialog id="home-dialog" aria-labelledby="dialog-heading"><div class="dialog-inside"><span class="mini-tag">LEAVE SESSION?</span><h2 id="dialog-heading">ホームに戻りますか？</h2><p>現在の学習結果は保存されません。</p><div class="dialog-actions"><button type="button" class="outline-btn" id="cancel-home">学習を続ける</button><button type="button" class="primary-btn" id="confirm-home">HOMEへ戻る</button></div></div></dialog>
+</body>
+</html>
